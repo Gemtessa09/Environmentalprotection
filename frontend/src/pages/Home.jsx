@@ -3,34 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import ThreeScene from "../components/ThreeScene";
 import ClubCard from "../components/ClubCard";
 import { useClubs } from "../context/ClubContext";
+import { useLanguage } from "../context/LanguageContext";
 
-const copy = {
-  en: {
-    title: "Protect Nature. Lead Change.",
-    subtitle:
-      "Haramaya University Environmental Protection Club brings students together for science-based action, community service, and a greener campus.",
-    ctaPrimary: "Explore initiatives",
-    ctaSecondary: "Join the club",
-    featured: "Featured initiatives",
-    impact: "What we do",
-    searchPlaceholder: "Search for environmental topics, projects, or information...",
-    searchButton: "Search",
-  },
-  am: {
-    title: "ተፈጥሮን ጠብቅ። ለውጥን መሪ ሁን።",
-    subtitle:
-      "የሀራማያ ዩኒቨርሲቲ ኢንቫይሮመንታል ጥበቃ ክለብ ተማሪዎችን ለሳይንስ መሠረት ያደረገ እርምጃ፣ ማህበረሰብ አገልግሎት እና አረንጓዴ ካምፓስ ያቀርባል።",
-    ctaPrimary: "ፕሮጀክቶችን ይመልከቱ",
-    ctaSecondary: "አባል ይሁኑ",
-    featured: "የተመረጡ ፕሮጀክቶች",
-    impact: "የምንሰራው",
-    searchPlaceholder: "የኢንቫይሮመንታል ርዕሶች፣ ፕሮጀክቶች ወይም መረጃ ይፈልጉ...",
-    searchButton: "ፈልግ",
-  },
-};
-
-const Home = ({ language }) => {
-  const t = copy[language] || copy.en;
+const Home = () => {
+  const { t } = useLanguage();
   const { featured, loading, error } = useClubs();
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
@@ -67,10 +43,10 @@ const Home = ({ language }) => {
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 text-center">
             <h1 className="text-3xl font-extrabold text-white md:text-5xl lg:text-6xl">
-              🌿 Environmental Club
+              🌿 {t('protectNature')}
             </h1>
             <p className="mt-4 text-lg text-emerald-100 md:text-xl">
-              Discover • Learn • Act for a Sustainable Future
+              {t('homeSubtitle')}
             </p>
 
             {/* Enhanced Search Form */}
@@ -80,25 +56,25 @@ const Home = ({ language }) => {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t.searchPlaceholder}
+                  placeholder={t('searchPlaceholder')}
                   className="w-full rounded-2xl border-0 bg-white/95 backdrop-blur-sm px-6 py-4 pr-20 text-lg shadow-lg placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-white/50"
                 />
                 <button
                   type="submit"
                   className="absolute right-2 top-2 rounded-xl bg-emerald-600 px-6 py-2 text-sm font-semibold text-white shadow-lg hover:bg-emerald-700 transition-colors duration-200"
                 >
-                  🔍 {t.searchButton}
+                  🔍 {t('searchButton')}
                 </button>
               </div>
             </form>
 
             {/* Quick Links */}
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <QuickLink to="/explore" icon="🌍" text="Explore" />
-              <QuickLink to="/science" icon="🔬" text="Science" />
-              <QuickLink to="/practice" icon="🌱" text="Practice" />
-              <QuickLink to="/policies" icon="📋" text="Policies" />
-              <QuickLink to="/about" icon="ℹ️" text="About" />
+              <QuickLink to="/explore" icon="🌍" text={t('explore')} />
+              <QuickLink to="/science" icon="🔬" text={t('science')} />
+              <QuickLink to="/practice" icon="🌱" text={t('practice')} />
+              <QuickLink to="/policies" icon="📋" text={t('policies')} />
+              <QuickLink to="/about" icon="ℹ️" text={t('about')} />
             </div>
           </div>
         </div>
@@ -120,10 +96,10 @@ const Home = ({ language }) => {
               Haramaya University • Environmental Club
             </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-emerald-950 md:text-4xl lg:text-5xl">
-              {t.title}
+              {t('protectNature')}
             </h2>
             <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
-              {t.subtitle}
+              {t('homeSubtitle')}
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -131,14 +107,14 @@ const Home = ({ language }) => {
                 to="/explore"
                 className="group inline-flex items-center justify-center rounded-2xl bg-emerald-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-emerald-700 hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                {t.ctaPrimary}
+                {t('exploreInitiatives')}
                 <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
               </Link>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center rounded-2xl border-2 border-emerald-600 bg-white px-8 py-4 text-base font-semibold text-emerald-600 shadow-lg hover:bg-emerald-50 hover:shadow-xl transition-all duration-300"
               >
-                {t.ctaSecondary}
+                {t('joinClub')}
               </Link>
             </div>
 
@@ -169,8 +145,8 @@ const Home = ({ language }) => {
       <section className="space-y-6">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl">{t.featured}</h2>
-            <p className="mt-2 text-slate-600">Discover our latest environmental initiatives and projects</p>
+            <h2 className="text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl">{t('featuredInitiatives')}</h2>
+            <p className="mt-2 text-slate-600">{t('discoverLatest')}</p>
           </div>
           <Link
             className="group inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
@@ -202,7 +178,7 @@ const Home = ({ language }) => {
       {/* What We Do */}
       <section className="space-y-6">
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl">{t.impact}</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl">{t('whatWeDo')}</h2>
           <p className="mt-2 text-slate-600">Our core activities for environmental protection and education</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">

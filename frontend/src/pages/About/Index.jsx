@@ -1,30 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext";
 
 const AboutIndex = () => {
+  const { t } = useLanguage();
   const items = [
     {
-      title: "Haramaya University",
+      title: t('haramayaUniversityTitle'),
       to: "/about/haramaya-university",
-      body: "The university community and its role in sustainability.",
+      body: t('haramayaUniversityDesc'),
       icon: "🏛️",
       color: "from-emerald-500 to-green-500",
       bgColor: "from-emerald-50 to-green-50",
       borderColor: "border-emerald-200/50"
     },
     {
-      title: "Environment Quality Authority (EQA)",
+      title: t('eqaTitle'),
       to: "/about/eqa",
-      body: "A reference institution for environmental information and awareness.",
+      body: t('eqaDesc'),
       icon: "🌿",
       color: "from-blue-500 to-emerald-500",
       bgColor: "from-blue-50 to-emerald-50",
       borderColor: "border-blue-200/50"
     },
     {
-      title: "National CHM",
+      title: t('nationalChmTitle'),
       to: "/about/national-chm",
-      body: "About the Clearing-House Mechanism concept and national role.",
+      body: t('nationalChmDesc'),
       icon: "🌐",
       color: "from-purple-500 to-pink-500",
       bgColor: "from-purple-50 to-pink-50",
@@ -46,19 +48,15 @@ const AboutIndex = () => {
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
-              About Our Partners
+              {t('aboutOurPartners')}
             </div>
 
             <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white drop-shadow-2xl mb-6">
-              Key
-              <span className="block bg-gradient-to-r from-emerald-200 to-green-200 bg-clip-text text-transparent">
-                Institutions
-              </span>
+              {t('keyInstitutions')}
             </h1>
 
             <p className="max-w-3xl text-lg md:text-xl leading-relaxed text-emerald-100 drop-shadow-lg mx-auto">
-              Learn about the key institutions and context behind the Haramaya University environmental initiatives.
-              Discover our partners in environmental protection and biodiversity conservation.
+              {t('aboutPartnersDescription')}
             </p>
           </div>
         </div>
@@ -92,7 +90,7 @@ const AboutIndex = () => {
 
                 {/* CTA Button */}
                 <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r ${item.bgColor} border ${item.borderColor} group-hover:shadow-lg transition-all duration-300`}>
-                  <span className="font-bold text-emerald-950">Learn More</span>
+                  <span className="font-bold text-emerald-950">{t('learnMore')}</span>
                   <svg className="w-4 h-4 text-emerald-950 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

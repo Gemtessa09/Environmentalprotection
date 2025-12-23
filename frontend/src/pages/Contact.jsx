@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaPhone, FaPaperPlane } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +26,7 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      alert('Thank you for your message! We\'ll get back to you soon.');
+      alert(t('thankYou'));
       setFormData({ name: '', email: '', subject: '', message: '' });
     }, 2000);
   };
@@ -32,39 +34,39 @@ const Contact = () => {
   const contactCards = [
     {
       icon: <FaEnvelope className="text-2xl" />,
-      title: "Email Us",
+      title: t('emailUs'),
       content: "environment@haramaya.edu.et",
       link: "mailto:environment@haramaya.edu.et",
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: <FaPhone className="text-2xl" />,
-      title: "Call Us",
-      content: "+251-000-0000",
-      link: "tel:+25100000",
+      title: t('callUs'),
+      content: "+251-XXX-XXXX",
+      link: "tel:+251-XXX-XXXX",
       color: "from-green-500 to-emerald-500"
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
-      title: "Visit Us",
-      content: "Main Campus, Student Center • Eco Hub Lab",
+      title: t('visitUs'),
+      content: t('haramayaCampus'),
       link: "#",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: <FaClock className="text-2xl" />,
-      title: "Office Hours",
-      content: "Mon–Fri • 9:00 AM – 5:00 PM",
+      title: t('officeHours'),
+      content: t('officeHoursText'),
       link: "#",
       color: "from-orange-500 to-red-500"
     }
   ];
 
   const socialLinks = [
-    { icon: <FaFacebook />, name: "Facebook", link: "https://www.facebook.com", color: "hover:text-blue-600" },
-    { icon: <FaYoutube />, name: "YouTube", link: "https://www.youtube.com", color: "hover:text-red-600" },
-    { icon: <FaInstagram />, name: "Instagram", link: "https://www.instagram.com", color: "hover:text-pink-600" },
-    { icon: <FaTwitter />, name: "Twitter", link: "https://www.twitter.com", color: "hover:text-blue-400" }
+    { icon: <FaFacebook />, name: t('facebook'), link: "https://www.facebook.com", color: "hover:text-blue-600" },
+    { icon: <FaYoutube />, name: t('youtube'), link: "https://www.youtube.com", color: "hover:text-red-600" },
+    { icon: <FaInstagram />, name: t('instagram'), link: "https://www.instagram.com", color: "hover:text-pink-600" },
+    { icon: <FaTwitter />, name: t('twitter'), link: "https://www.twitter.com", color: "hover:text-blue-400" }
   ];
 
   return (
@@ -85,7 +87,7 @@ const Contact = () => {
             className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white border border-white/20"
           >
             <FaPaperPlane className="mr-2" />
-            Get in Touch
+            {t('contactTitle')}
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -93,7 +95,7 @@ const Contact = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-6 text-4xl font-extrabold text-white md:text-6xl"
           >
-            Let's Connect & Grow Together
+            {t('contactSubtitle')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -101,8 +103,7 @@ const Contact = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mt-6 max-w-2xl mx-auto text-xl text-white/90"
           >
-            Join our environmental mission, partner with us, or invite us for workshops.
-            We're here to make a difference together.
+            {t('contactDescription')}
           </motion.p>
         </div>
 
@@ -121,7 +122,7 @@ const Contact = () => {
           className="mb-16"
         >
           <h2 className="text-center text-3xl font-bold text-gray-900 mb-12">
-            Reach Out to Us
+            {t('reachOut')}
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {contactCards.map((card, index) => (
@@ -144,7 +145,7 @@ const Contact = () => {
                     href={card.link}
                     className={`inline-flex items-center text-sm font-medium bg-gradient-to-r ${card.color} bg-clip-text text-transparent hover:underline`}
                   >
-                    Contact us →
+                    {t('contactUs')}
                   </a>
                 )}
               </motion.div>
@@ -161,16 +162,16 @@ const Contact = () => {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Send us a Message</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('sendMessage')}</h2>
               <p className="text-gray-600">
-                Have questions, suggestions, or want to collaborate? We'd love to hear from you.
+                {t('contactFormDescription')}
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('name')}</label>
                   <input
                     type="text"
                     name="name"
@@ -182,7 +183,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('email')}</label>
                   <input
                     type="email"
                     name="email"
@@ -196,7 +197,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('subject')}</label>
                 <input
                   type="text"
                   name="subject"
@@ -209,7 +210,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('message')}</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -231,12 +232,12 @@ const Contact = () => {
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                    Sending...
+                    {t('sending')}
                   </div>
                 ) : (
                   <div className="flex items-center justify-center">
                     <FaPaperPlane className="mr-2" />
-                    Send Message
+                    {t('sendMessageBtn')}
                   </div>
                 )}
               </motion.button>
@@ -252,9 +253,9 @@ const Contact = () => {
           >
             {/* Social Media */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Follow Us</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('followUs')}</h3>
               <p className="text-gray-600 mb-6">
-                Stay connected with our latest environmental initiatives and events.
+                {t('followUsDescription')}
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, index) => (
@@ -276,35 +277,35 @@ const Contact = () => {
 
             {/* Quick Info */}
             <div className="bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-2xl p-8 text-white shadow-lg">
-              <h3 className="text-2xl font-bold mb-6">Why Contact Us?</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('whyContact')}</h3>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p>Join our environmental initiatives and make a real impact</p>
+                  <p>{t('joinInitiatives')}</p>
                 </div>
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p>Partner with us for workshops and awareness campaigns</p>
+                  <p>{t('partnerWorkshops')}</p>
                 </div>
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p>Get expert advice on sustainable practices</p>
+                  <p>{t('expertAdvice')}</p>
                 </div>
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <p>Collaborate on research and environmental projects</p>
+                  <p>{t('collaborateProjects')}</p>
                 </div>
               </div>
             </div>
 
             {/* Map Placeholder */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Find Us</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('findUs')}</h3>
               <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
                 <div className="text-center">
                   <FaMapMarkerAlt className="text-4xl text-gray-400 mx-auto mb-2" />
                   <p className="text-gray-500">Interactive Map</p>
-                  <p className="text-sm text-gray-400">Haramaya University Main Campus</p>
+                  <p className="text-sm text-gray-400">{t('haramayaCampus')}</p>
                 </div>
               </div>
             </div>
