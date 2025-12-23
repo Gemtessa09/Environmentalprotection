@@ -146,6 +146,28 @@ const translations = {
     eqaDesc: 'A reference institution for environmental information and awareness.',
     nationalChmTitle: 'National CHM',
     nationalChmDesc: 'About the Clearing-House Mechanism concept and national role.',
+
+    // Environmental Awareness Section
+    environmentalAwarenessTitle: 'Protecting Our Planet Together',
+    environmentalAwarenessSubtitle: 'Environmental protection in Ethiopia and around the world starts with each of us. Join the global movement for a sustainable future.',
+    environmentalAwarenessDesc: 'Every action counts in preserving our beautiful planet. From the highlands of Ethiopia to the global community, we work together to protect our environment for future generations.',
+    learnAboutProtection: 'Learn About Environmental Protection',
+
+    // Environmental Photo Gallery
+    photoGalleryTitle: 'Environmental Protection in Action',
+    photoGallerySubtitle: 'Witness the beauty of nature and our commitment to protecting it across Ethiopia and the world.',
+    treePlanting: 'Tree Planting Initiative',
+    treePlantingDesc: 'Restoring green spaces in Haramaya University campus',
+    wildlifeConservation: 'Wildlife Conservation',
+    wildlifeConservationDesc: 'Protecting Ethiopia\'s diverse wildlife species',
+    cleanWater: 'Clean Water Protection',
+    cleanWaterDesc: 'Ensuring access to clean water for communities',
+    sustainableFarming: 'Sustainable Farming',
+    sustainableFarmingDesc: 'Promoting eco-friendly agricultural practices',
+    wasteManagement: 'Waste Management',
+    wasteManagementDesc: 'Community clean-up and recycling programs',
+    climateAction: 'Climate Action',
+    climateActionDesc: 'Fighting climate change through education and action',
   },
   am: {
     // Navigation
@@ -292,6 +314,28 @@ const translations = {
     eqaDesc: 'ለአካባቢ መረጃ እና ማሳወቂያ ያልተራቁ ተቋም።',
     nationalChmTitle: 'ብሄራዊ ሲኤችኤም',
     nationalChmDesc: 'ስለ የማፅዳት ቤት መርሃ ግብር አገላለጽ እና ብሄራዊ ሚና።',
+
+    // Environmental Awareness Section
+    environmentalAwarenessTitle: 'አንድ ላይ ፕላኔታችንን እናርክል',
+    environmentalAwarenessSubtitle: 'በኢትዮጵያ እና በዓለም አቀፍ የአካባቢ ጥበቃ ከእኛ ሁሉ ጋር ያቀናል። ለተቀጣጣይ የቀጣይ አለም አቀፍ እንቅስቃሴ ተቀላቀሉ።',
+    environmentalAwarenessDesc: 'በሚሊዮኖች የሆኑ ተፈጥሮአዊ ሕይወቶች ለማርክ እያንዳንዱ ተግባር ያህል ያስተያየታል። ከኢትዮጵያ ከፍተኛ አካባቢ እስከ አለም አቀፍ ማህበረሰብ ያለን ተፈጥሮአዊ ፕላኔት ለሚመጣ ተፈኖች ለማርክ አንድ ላይ እንሰራለን።',
+    learnAboutProtection: 'ስለ አካባቢ ጥበቃ ይለምዱ',
+
+    // Environmental Photo Gallery
+    photoGalleryTitle: 'የአካባቢ ጥበቃ በተግባር',
+    photoGallerySubtitle: 'በኢትዮጵያ እና በዓለም አቀፍ ተፈጥሮአዊ ውበት እና ለመጠበቅ ያለንን ቁርጠኝነት ያስተያዩ።',
+    treePlanting: 'የዛፎች መስቀል ተግባር',
+    treePlantingDesc: 'በሃራማያ ዩኒቨርሲቲ ካምፓስ አረንጓዴ ቦታዎችን መልሰን መስጠት',
+    wildlifeConservation: 'የተፈጥሮ ጥበቃ',
+    wildlifeConservationDesc: 'የኢትዮጵያ ተለያዩ የተፈጥሮ ሕይወቶች አይነቶችን መጠበቅ',
+    cleanWater: 'የንጽህ ውሃ ጥበቃ',
+    cleanWaterDesc: 'ለማህበረሰቦች ንጽህ ውሃ መስጠትን ማረጋገጥ',
+    sustainableFarming: 'ተቀጣጣይ እህል ስራ',
+    sustainableFarmingDesc: 'ኢኮ-ፍረንድሊ የሆኑ የእህል ስራ ልምዶችን ማሳደግ',
+    wasteManagement: 'የቆሻሻ አስተያየት',
+    wasteManagementDesc: 'የማህበረሰብ ተነጻጸሩ ቦታዎች እና የማቀዝቀዣ ፕሮግራሞች',
+    climateAction: 'የአየር አጠቃላይ ተግባር',
+    climateActionDesc: 'በትምህርት እና በተግባር አየር አጠቃላይ ለውጥን መዋጋት',
   }
 };
 

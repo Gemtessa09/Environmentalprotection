@@ -129,15 +129,160 @@ const Home = () => {
             <div className="relative">
               <ThreeScene />
               <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white p-4 shadow-xl">
-                <div className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Live 3D Scene</div>
+                <div className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">{t('live3dScene')}</div>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-4">
-              <Stat label="Trees Planted" value="1,200+" icon="🌳" />
-              <Stat label="Cleanups" value="45+" icon="🧹" />
-              <Stat label="Active Members" value="250+" icon="👥" />
+              <Stat label={t('treesPlanted')} value="1,200+" icon="🌳" />
+              <Stat label={t('cleanups')} value="45+" icon="🧹" />
+              <Stat label={t('activeMembers')} value="250+" icon="👥" />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Environmental Awareness Section */}
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 p-8 text-white shadow-2xl md:p-12">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative z-10">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
+                  🌍 {t('environmentalAwarenessTitle')}
+                </h2>
+                <p className="mt-4 text-lg text-green-100 md:text-xl">
+                  {t('environmentalAwarenessSubtitle')}
+                </p>
+              </div>
+              <p className="text-base leading-relaxed text-green-50 md:text-lg">
+                {t('environmentalAwarenessDesc')}
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-lg hover:bg-green-50 transition-all duration-300 hover:scale-105"
+                >
+                  {t('learnAboutProtection')}
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center rounded-2xl border-2 border-white bg-transparent px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-white/10 transition-all duration-300"
+                >
+                  {t('contactUs')}
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="aspect-square w-full max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-green-400 to-emerald-500 p-8 shadow-2xl">
+                  <div className="flex h-full items-center justify-center">
+                    <div className="text-center space-y-4">
+                      <div className="text-6xl">🌱</div>
+                      <div className="text-4xl">🌍</div>
+                      <div className="text-2xl">🇪🇹</div>
+                      <p className="text-sm font-medium text-green-800">
+                        Environmental Protection
+                      </p>
+                      <p className="text-xs text-green-700">
+                        Ethiopia & World
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -top-4 -right-4 rounded-full bg-yellow-400 p-3 shadow-lg">
+                  <span className="text-2xl">☀️</span>
+                </div>
+                <div className="absolute -bottom-4 -left-4 rounded-full bg-blue-400 p-3 shadow-lg">
+                  <span className="text-2xl">💧</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Environmental Photo Gallery */}
+      <section className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-emerald-950 md:text-4xl">
+            📸 {t('photoGalleryTitle')}
+          </h2>
+          <p className="mt-4 text-lg text-slate-600 md:text-xl">
+            {t('photoGallerySubtitle')}
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* Tree Planting */}
+          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-100 to-emerald-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <div className="aspect-square bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-6xl">🌳</span>
+            </div>
+            <h3 className="text-xl font-semibold text-emerald-900 mb-2">{t('treePlanting')}</h3>
+            <p className="text-sm text-emerald-700">{t('treePlantingDesc')}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+          </div>
+
+          {/* Wildlife Conservation */}
+          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <div className="aspect-square bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-6xl">🦁</span>
+            </div>
+            <h3 className="text-xl font-semibold text-cyan-900 mb-2">{t('wildlifeConservation')}</h3>
+            <p className="text-sm text-cyan-700">{t('wildlifeConservationDesc')}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+          </div>
+
+          {/* Clean Water */}
+          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <div className="aspect-square bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-6xl">💧</span>
+            </div>
+            <h3 className="text-xl font-semibold text-indigo-900 mb-2">{t('cleanWater')}</h3>
+            <p className="text-sm text-indigo-700">{t('cleanWaterDesc')}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+          </div>
+
+          {/* Sustainable Farming */}
+          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-100 to-orange-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <div className="aspect-square bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-6xl">🌾</span>
+            </div>
+            <h3 className="text-xl font-semibold text-orange-900 mb-2">{t('sustainableFarming')}</h3>
+            <p className="text-sm text-orange-700">{t('sustainableFarmingDesc')}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+          </div>
+
+          {/* Waste Management */}
+          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-slate-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <div className="aspect-square bg-gradient-to-br from-gray-400 to-slate-500 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-6xl">♻️</span>
+            </div>
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">{t('wasteManagement')}</h3>
+            <p className="text-sm text-slate-700">{t('wasteManagementDesc')}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+          </div>
+
+          {/* Climate Action */}
+          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-100 to-pink-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <div className="aspect-square bg-gradient-to-br from-red-400 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-6xl">🌡️</span>
+            </div>
+            <h3 className="text-xl font-semibold text-pink-900 mb-2">{t('climateAction')}</h3>
+            <p className="text-sm text-pink-700">{t('climateActionDesc')}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <Link
+            to="/explore"
+            className="inline-flex items-center justify-center rounded-2xl bg-emerald-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-emerald-700 transition-all duration-300 hover:scale-105"
+          >
+            {t('exploreInitiatives')}
+            <span className="ml-2">→</span>
+          </Link>
         </div>
       </section>
 
@@ -152,7 +297,7 @@ const Home = () => {
             className="group inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
             to="/explore"
           >
-            View all
+            {t('viewAll')}
             <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>
