@@ -7,15 +7,15 @@ import {
   deleteClub,
   getFeaturedClubs,
 } from "../controllers/clubController.js";
-import auth from "../middleware/auth.js";
+import { apiKeyAuth } from "../middleware/auth.js";
 
 const router = Router();
 
 router.get("/", getClubs);
 router.get("/featured", getFeaturedClubs);
 router.get("/:id", getClub);
-router.post("/", auth, createClub);
-router.put("/:id", auth, updateClub);
-router.delete("/:id", auth, deleteClub);
+router.post("/", apiKeyAuth, createClub);
+router.put("/:id", apiKeyAuth, updateClub);
+router.delete("/:id", apiKeyAuth, deleteClub);
 
 export default router;

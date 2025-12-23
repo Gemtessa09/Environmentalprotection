@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import clubRoutes from "./routes/clubRoutes.js";
 import memberRoutes from "./routes/memberRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +23,9 @@ app.use(morgan("dev"));
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", service: "haramaya-environmental-club" });
 });
+
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
 app.use("/api/clubs", clubRoutes);
 app.use("/api/members", memberRoutes);
 
