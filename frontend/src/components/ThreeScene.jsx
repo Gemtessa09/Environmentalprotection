@@ -8,98 +8,141 @@ const ThreeScene = () => {
     const mountEl = mountRef.current;
     if (!mountEl) return;
 
+    // Scene Setup
     const width = mountEl.clientWidth;
     const height = mountEl.clientHeight;
-
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
-    camera.position.z = 4;
+    
+    // Camera
+    const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+    camera.position.z = 6;
 
+    // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     const canvasEl = renderer.domElement;
     mountEl.appendChild(canvasEl);
 
-    const geometry = new THREE.SphereGeometry(1.4, 64, 64);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x4caf50,
-      emissive: 0x0c3b28,
-      roughness: 0.35,
+    // --- OBJECTS ---
+
+    // 1. Low Poly Planet
+    const planetGeo = new THREE.IcosahedronGeometry(2, 1);
+    const planetMat = new THREE.MeshStandardMaterial({
+      color: 0x10b981, // Emerald-500
+      flatShading: true,
+      roughness: 0.6,
       metalness: 0.1,
     });
-    const sphere = new THREE.Mesh(geometry, material);
-    scene.add(sphere);
+    const planet = new THREE.Mesh(planetGeo, planetMat);
+    scene.add(planet);
 
-    const ringGeometry = new THREE.TorusGeometry(2, 0.05, 16, 100);
-    const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xf4a825 });
-    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-    ring.rotation.x = Math.PI / 3;
-    scene.add(ring);
+    // 2. Wireframe Atmosphere
+    const atmosGeo = new THREE.IcosahedronGeometry(2.2, 1);
+    const atmosMat = new THREE.MeshBasicMaterial({
+      color: 0x34d399, // Emerald-400
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15,
+    });
+    const atmosphere = new THREE.Mesh(atmosGeo, atmosMat);
+    scene.add(atmosphere);
 
-    const light = new THREE.DirectionalLight(0xffffff, 0.9);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-
-    const ambient = new THREE.AmbientLight(0xbcd8c7, 0.6);
-    scene.add(ambient);
-
-    const stars = new THREE.BufferGeometry();
-    const starCount = 600;
-    const positions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 12;
+    // 3. Floating Particles
+    const particlesGeo = new THREE.BufferGeometry();
+    const particleCount = 150;
+    const posArray = new Float32Array(particleCount * 3);
+    
+    for(let i = 0; i < particleCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 10;
     }
-    stars.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.01 });
-    const starField = new THREE.Points(stars, starMaterial);
-    scene.add(starField);
+    
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMat = new THREE.PointsMaterial({
+        size: 0.03,
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.6
+    });
+    const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particlesMesh);
+
+    // --- LIGHTING ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(10, 10, 5);
+    scene.add(dirLight);
+
+    const pointLight = new THREE.PointLight(0x34d399, 2, 10);
+    pointLight.position.set(-2, 1, 3);
+    scene.add(pointLight);
+
+    // --- ANIMATION ---
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    const handleMouseMove = (event) => {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    };
+    window.addEventListener('mousemove', handleMouseMove);
 
     const handleResize = () => {
-      const el = mountRef.current;
-      if (!el) return;
-      const { clientWidth, clientHeight } = el;
-      renderer.setSize(clientWidth, clientHeight);
-      camera.aspect = clientWidth / clientHeight;
+      if (!mountEl) return;
+      const w = mountEl.clientWidth;
+      const h = mountEl.clientHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
     };
-
     window.addEventListener("resize", handleResize);
 
     let frameId;
     const animate = () => {
       frameId = requestAnimationFrame(animate);
-      sphere.rotation.y += 0.004;
-      ring.rotation.z += 0.002;
+
+      // Rotate Planet
+      planet.rotation.y += 0.002;
+      planet.rotation.x += 0.001;
+      
+      // Rotate Atmosphere
+      atmosphere.rotation.y -= 0.001;
+      atmosphere.rotation.z += 0.001;
+
+      // Rotate Particles
+      particlesMesh.rotation.y += 0.0005;
+
+      // Mouse Interaction (Parallax)
+      planet.rotation.y += mouseX * 0.05;
+      planet.rotation.x += mouseY * 0.05;
+
       renderer.render(scene, camera);
     };
-
     animate();
 
+    // Cleanup
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", handleResize);
-
-      // React 18 StrictMode can mount/unmount twice in dev; guard DOM operations.
-      const el = mountRef.current;
-      if (el && canvasEl && el.contains(canvasEl)) {
-        el.removeChild(canvasEl);
+      window.removeEventListener('mousemove', handleMouseMove);
+      
+      if (mountEl && canvasEl && mountEl.contains(canvasEl)) {
+        mountEl.removeChild(canvasEl);
       }
-
-      // Dispose GPU resources
-      geometry.dispose();
-      material.dispose();
-      ringGeometry.dispose();
-      ringMaterial.dispose();
-      stars.dispose();
-      starMaterial.dispose();
+      
+      // Dispose
+      planetGeo.dispose(); planetMat.dispose();
+      atmosGeo.dispose(); atmosMat.dispose();
+      particlesGeo.dispose(); particlesMat.dispose();
       renderer.dispose();
     };
   }, []);
 
   return (
     <div
-      className="h-80 overflow-hidden rounded-2xl border border-emerald-900/10 bg-gradient-to-b from-emerald-700 to-emerald-950 shadow-sm"
+      className="h-80 w-full overflow-hidden rounded-2xl border border-emerald-900/10 bg-gradient-to-b from-emerald-900 to-black shadow-xl"
       ref={mountRef}
     />
   );

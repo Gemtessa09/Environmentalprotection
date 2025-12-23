@@ -53,6 +53,24 @@ const HaramayaUniversity = () => {
           </div>
         </div>
 
+        {/* Campus Image */}
+        <div className="relative h-96 overflow-hidden rounded-3xl shadow-2xl group">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Haramaya_University_Main_Gate.jpg/1200px-Haramaya_University_Main_Gate.jpg"
+            alt="Haramaya University Main Gate"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            onError={(e) => {
+              e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+            <div className="absolute bottom-0 left-0 p-8">
+              <h3 className="text-2xl font-bold text-white">Main Campus</h3>
+              <p className="text-emerald-100">A hub of learning and innovation in Eastern Ethiopia</p>
+            </div>
+          </div>
+        </div>
+
         {/* History Section */}
         <div className="group relative overflow-hidden rounded-3xl bg-white/80 backdrop-blur-xl border border-emerald-200/50 p-8 md:p-12 shadow-2xl hover:shadow-3xl transition-all duration-500 transform-gpu hover:scale-[1.02]">
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500"></div>

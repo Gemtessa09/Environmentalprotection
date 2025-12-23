@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import Background3D from "./components/Background3D";
 import Home from "./pages/Home";
 import ExploreIndex from "./pages/Explore/Index";
 import Announcements from "./pages/Explore/Announcements";
@@ -44,7 +45,8 @@ const App = () => {
     <LanguageProvider>
       <ClubProvider>
         <Router>
-          <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-white to-emerald-50 overflow-x-hidden">
+          <Background3D />
+          <div className="min-h-screen overflow-x-hidden relative">
             <Navbar />
             <LanguageSwitcher />
             <main className="mx-auto max-w-6xl px-4 pb-16">

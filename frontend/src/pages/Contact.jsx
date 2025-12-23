@@ -298,16 +298,28 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Interactive Map */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('findUs')}</h3>
-              <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <FaMapMarkerAlt className="text-4xl text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-500">Interactive Map</p>
-                  <p className="text-sm text-gray-400">{t('haramayaCampus')}</p>
-                </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Interactive Map</h3>
+              <div className="aspect-square md:aspect-video w-full overflow-hidden rounded-xl shadow-inner border border-gray-200 relative group">
+                <iframe 
+                  title="Haramaya University Map"
+                  width="100%" 
+                  height="100%" 
+                  id="gmap_canvas" 
+                  src="https://maps.google.com/maps?q=Haramaya%20University&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  marginHeight="0" 
+                  marginWidth="0"
+                  className="filter grayscale hover:grayscale-0 transition-all duration-500"
+                ></iframe>
+                <div className="absolute inset-0 pointer-events-none border-4 border-white/20 rounded-xl"></div>
               </div>
+              <p className="mt-4 text-center text-sm text-gray-500 font-medium flex items-center justify-center">
+                <FaMapMarkerAlt className="mr-2 text-emerald-600 animate-bounce" />
+                Haramaya University Main Campus
+              </p>
             </div>
           </motion.div>
         </div>

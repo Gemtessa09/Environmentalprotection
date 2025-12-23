@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ThreeScene from "../components/ThreeScene";
 import ClubCard from "../components/ClubCard";
+import TiltCard from "../components/TiltCard";
 import { useClubs } from "../context/ClubContext";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -215,64 +216,76 @@ const Home = () => {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Tree Planting */}
-          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-100 to-emerald-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-square bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-6xl">🌳</span>
-            </div>
+          <TiltCard className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-100 to-emerald-200 p-6 shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" 
+              alt="Tree Planting" 
+              className="aspect-square w-full object-cover rounded-xl mb-4 shadow-md" 
+            />
             <h3 className="text-xl font-semibold text-emerald-900 mb-2">{t('treePlanting')}</h3>
             <p className="text-sm text-emerald-700">{t('treePlantingDesc')}</p>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-          </div>
+          </TiltCard>
 
           {/* Wildlife Conservation */}
-          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-square bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-6xl">🦁</span>
-            </div>
+          <TiltCard className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-200 p-6 shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80" 
+              alt="Wildlife Conservation" 
+              className="aspect-square w-full object-cover rounded-xl mb-4 shadow-md" 
+            />
             <h3 className="text-xl font-semibold text-cyan-900 mb-2">{t('wildlifeConservation')}</h3>
             <p className="text-sm text-cyan-700">{t('wildlifeConservationDesc')}</p>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-          </div>
+          </TiltCard>
 
           {/* Clean Water */}
-          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-square bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-6xl">💧</span>
-            </div>
+          <TiltCard className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-200 p-6 shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=800&q=80" 
+              alt="Clean Water" 
+              className="aspect-square w-full object-cover rounded-xl mb-4 shadow-md" 
+            />
             <h3 className="text-xl font-semibold text-indigo-900 mb-2">{t('cleanWater')}</h3>
             <p className="text-sm text-indigo-700">{t('cleanWaterDesc')}</p>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-          </div>
+          </TiltCard>
 
           {/* Sustainable Farming */}
-          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-100 to-orange-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-square bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-6xl">🌾</span>
-            </div>
+          <TiltCard className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-100 to-orange-200 p-6 shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80" 
+              alt="Sustainable Farming" 
+              className="aspect-square w-full object-cover rounded-xl mb-4 shadow-md" 
+            />
             <h3 className="text-xl font-semibold text-orange-900 mb-2">{t('sustainableFarming')}</h3>
             <p className="text-sm text-orange-700">{t('sustainableFarmingDesc')}</p>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-          </div>
+          </TiltCard>
 
           {/* Waste Management */}
-          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-slate-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-square bg-gradient-to-br from-gray-400 to-slate-500 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-6xl">♻️</span>
-            </div>
+          <TiltCard className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-slate-200 p-6 shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80" 
+              alt="Waste Management" 
+              className="aspect-square w-full object-cover rounded-xl mb-4 shadow-md" 
+            />
             <h3 className="text-xl font-semibold text-slate-900 mb-2">{t('wasteManagement')}</h3>
             <p className="text-sm text-slate-700">{t('wasteManagementDesc')}</p>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-          </div>
+          </TiltCard>
 
           {/* Climate Action */}
-          <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-100 to-pink-200 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-square bg-gradient-to-br from-red-400 to-pink-500 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-6xl">🌡️</span>
-            </div>
+          <TiltCard className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-100 to-pink-200 p-6 shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" 
+              alt="Climate Action" 
+              className="aspect-square w-full object-cover rounded-xl mb-4 shadow-md" 
+            />
             <h3 className="text-xl font-semibold text-pink-900 mb-2">{t('climateAction')}</h3>
             <p className="text-sm text-pink-700">{t('climateActionDesc')}</p>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-          </div>
+          </TiltCard>
         </div>
 
         <div className="text-center">
