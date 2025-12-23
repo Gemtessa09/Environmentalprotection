@@ -278,8 +278,8 @@ const translations = {
     environmentalEducationDesc: 'ተማሪዎች የሚመሩበት ስልፋዎች፣ የምርምር ተያያያዎች እና እውቀትን በተግባር የሚቀይሩ ተግባራት።',
 
     // Language Switcher
-    amharicButton: 'English',
-    englishButton: 'አማርኛ',
+    amharicButton: 'አማርኛ',
+    englishButton: 'English',
 
     // About Page
     aboutOurPartners: 'ስለ አጋሮቻችን',
