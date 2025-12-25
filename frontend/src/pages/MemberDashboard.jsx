@@ -238,7 +238,7 @@ const MemberDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-emerald-50/30">
+    <div className="min-h-screen bg-white/80 backdrop-blur-sm">
       {/* Mobile Header */}
       <header className="lg:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div className="px-4 py-3 flex items-center justify-between">

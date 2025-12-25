@@ -2,11 +2,23 @@ import React from "react";
 
 const HaramayaUniversity = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
+    <div className="min-h-screen bg-white/80 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 py-12 space-y-12">
         {/* Hero Section */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 p-8 md:p-16 shadow-2xl transform-gpu">
-          <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative overflow-hidden rounded-3xl p-8 md:p-16 shadow-2xl transform-gpu group">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="/haramayauniversityphoto2.jpg" 
+              alt="Haramaya University Background" 
+              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              onError={(e) => {
+                e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/60 via-green-900/50 to-teal-900/60"></div>
+          </div>
+
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
 
@@ -53,20 +65,37 @@ const HaramayaUniversity = () => {
           </div>
         </div>
 
-        {/* Campus Image */}
-        <div className="relative h-96 overflow-hidden rounded-3xl shadow-2xl group">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Haramaya_University_Main_Gate.jpg/1200px-Haramaya_University_Main_Gate.jpg"
-            alt="Haramaya University Main Gate"
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            onError={(e) => {
-              e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
-            <div className="absolute bottom-0 left-0 p-8">
-              <h3 className="text-2xl font-bold text-white">Main Campus</h3>
-              <p className="text-emerald-100">A hub of learning and innovation in Eastern Ethiopia</p>
+        {/* Campus Images Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="relative h-80 overflow-hidden rounded-3xl shadow-2xl group">
+            <img
+              src="/haramayauniversityphoto2.jpg"
+              alt="Haramaya University Main Gate"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={(e) => {
+                e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+              <div className="absolute bottom-0 left-0 p-6">
+                <h3 className="text-xl font-bold text-white">Main Campus</h3>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative h-80 overflow-hidden rounded-3xl shadow-2xl group">
+            <img
+              src="/haramayauniversityphoto3.jpg"
+              alt="Haramaya University Landscape"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={(e) => {
+                e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+              <div className="absolute bottom-0 left-0 p-6">
+                <h3 className="text-xl font-bold text-white">Green Campus Initiative</h3>
+              </div>
             </div>
           </div>
         </div>

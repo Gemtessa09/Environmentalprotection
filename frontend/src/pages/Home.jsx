@@ -38,15 +38,27 @@ const Home = () => {
 
   return (
     <div className="space-y-12">
-      {/* Beautiful Search Bar */}
+      {/* Beautiful Search Bar with Hero Image */}
       <section className="mt-6">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 p-8 shadow-2xl md:p-12">
-          <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative overflow-hidden rounded-3xl shadow-2xl md:p-20 p-8 group">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="/haramayauniversityphoto2.jpg" 
+              alt="Haramaya University" 
+              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              onError={(e) => {
+                e.target.src = "https://images.unsplash.com/photo-1501854140884-074bf6b24363?auto=format&fit=crop&w=1600&q=80";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-emerald-900/80"></div>
+          </div>
+
           <div className="relative z-10 text-center">
-            <h1 className="text-3xl font-extrabold text-white md:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-extrabold text-white md:text-5xl lg:text-6xl drop-shadow-2xl">
               🌿 {t('protectNature')}
             </h1>
-            <p className="mt-4 text-lg text-emerald-100 md:text-xl">
+            <p className="mt-4 text-lg text-emerald-100 md:text-xl drop-shadow-lg font-medium">
               {t('homeSubtitle')}
             </p>
 
@@ -87,7 +99,7 @@ const Home = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm">
               <img
-                src="/haramaya-logo.png"
+                src="/logo.jpg"
                 alt="Haramaya University logo"
                 className="h-5 w-5 rounded-full border border-emerald-900/10 bg-white object-cover"
                 onError={(e) => {
@@ -127,10 +139,20 @@ const Home = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="relative">
-              <ThreeScene />
-              <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white p-4 shadow-xl">
-                <div className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">{t('live3dScene')}</div>
+            <div className="relative overflow-hidden rounded-2xl shadow-xl group">
+              <img 
+                src="/haramayauniversityphoto3.jpg" 
+                alt="Haramaya University Campus" 
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                onError={(e) => {
+                  e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="text-xs font-semibold text-white/90 uppercase tracking-wide bg-black/30 backdrop-blur-sm inline-block px-3 py-1 rounded-full border border-white/20">
+                  {t('live3dScene')}
+                </div>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-4">
@@ -176,20 +198,12 @@ const Home = () => {
             </div>
             <div className="flex items-center justify-center">
               <div className="relative">
-                <div className="aspect-square w-full max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-green-400 to-emerald-500 p-8 shadow-2xl">
-                  <div className="flex h-full items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <div className="text-6xl">🌱</div>
-                      <div className="text-4xl">🌍</div>
-                      <div className="text-2xl">🇪🇹</div>
-                      <p className="text-sm font-medium text-green-800">
-                        Environmental Protection
-                      </p>
-                      <p className="text-xs text-green-700">
-                        Ethiopia & World
-                      </p>
-                    </div>
-                  </div>
+                <div className="aspect-square w-full max-w-md overflow-hidden rounded-2xl shadow-2xl group">
+                  <img 
+                    src="/haramayauniversityphoto2.jpg" 
+                    alt="Haramaya University Environment" 
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
                 <div className="absolute -top-4 -right-4 rounded-full bg-yellow-400 p-3 shadow-lg">
                   <span className="text-2xl">☀️</span>

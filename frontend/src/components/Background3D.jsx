@@ -181,7 +181,7 @@ const Background3D = () => {
     <div
       ref={mountRef}
       className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
-      style={{ background: 'linear-gradient(to bottom, #cffafe, #ffffff, #cffafe)' }} // cyan-100 (aqua) to white
+      // Background is now handled by body CSS
     />
   );
 };

@@ -71,7 +71,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-cyan-50">
+    <div className="min-h-screen bg-white/80 backdrop-blur-sm">
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
