@@ -267,7 +267,7 @@ const MemberDashboard = () => {
             <div className="relative group">
               {user.photo ? (
                 <img 
-                  src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/${user.photo}`} 
+                  src={`${process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000')}/${user.photo}`} 
                   alt="Profile" 
                   className="h-9 w-9 rounded-full object-cover border-2 border-white shadow-sm"
                 />
@@ -287,7 +287,7 @@ const MemberDashboard = () => {
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl mb-4">
                 {user.photo ? (
                   <img 
-                    src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/${user.photo}`} 
+                    src={`${process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000')}/${user.photo}`} 
                     alt="Profile" 
                     className="h-12 w-12 rounded-full object-cover"
                   />
@@ -382,7 +382,7 @@ const MemberDashboard = () => {
                 <div className="relative">
                   {user.photo ? (
                     <img 
-                      src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/${user.photo}`} 
+                      src={`${process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000')}/${user.photo}`} 
                       alt="Profile" 
                       className="h-14 w-14 rounded-full object-cover border-3 border-white shadow-md"
                     />
@@ -729,7 +729,7 @@ const MemberDashboard = () => {
                           <div className="h-32 w-32 lg:h-40 lg:w-40 rounded-2xl lg:rounded-3xl border-4 border-white shadow-xl overflow-hidden bg-white">
                             {user.photo ? (
                               <img 
-                                src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/${user.photo}`} 
+                                src={`${process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000')}/${user.photo}`} 
                                 alt="Profile" 
                                 className="h-full w-full object-cover"
                               />

@@ -34,7 +34,7 @@ PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/club
 API_KEY=changeme
 JWT_SECRET=your_super_secret_jwt_key_here
-CLIENT_URL=http://localhost:3000
+CLIENT_URL=https://environmental-protection.onrender.com
 ```
 
 ## User Roles & Permissions
