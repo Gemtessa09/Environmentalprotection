@@ -46,7 +46,8 @@ router.post("/register", async (req, res) => {
         email: member.email,
         role: member.role,
         department: member.department,
-        phone: member.phone
+        phone: member.phone,
+        photo: member.photo
       },
       token
     });
@@ -93,7 +94,8 @@ router.post("/login", async (req, res) => {
         email: member.email,
         role: member.role,
         department: member.department,
-        phone: member.phone
+        phone: member.phone,
+        photo: member.photo
       },
       token
     });

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaPhone, FaPaperPlane } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaGithub, FaPhone, FaPaperPlane } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 
 const Contact = () => {
@@ -66,7 +66,8 @@ const Contact = () => {
     { icon: <FaFacebook />, name: t('facebook'), link: "https://www.facebook.com", color: "hover:text-blue-600" },
     { icon: <FaYoutube />, name: t('youtube'), link: "https://www.youtube.com", color: "hover:text-red-600" },
     { icon: <FaInstagram />, name: t('instagram'), link: "https://www.instagram.com", color: "hover:text-pink-600" },
-    { icon: <FaTwitter />, name: t('twitter'), link: "https://www.twitter.com", color: "hover:text-blue-400" }
+    { icon: <FaTwitter />, name: t('twitter'), link: "https://www.twitter.com", color: "hover:text-blue-400" },
+    { icon: <FaGithub />, name: "GitHub", link: "https://github.com", color: "hover:text-gray-800" }
   ];
 
   return (

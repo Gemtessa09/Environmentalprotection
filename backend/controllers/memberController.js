@@ -1,5 +1,6 @@
 import Member from "../models/Member.js";
-import { authenticate, staffAndAdmin } from "../middleware/auth.js";
+import Task from "../models/Task.js";
+import { authenticate, staffAndAdmin, adminOnly } from "../middleware/auth.js";
 
 // Get all members (public endpoint for viewing members)
 export const getMembers = async (req, res, next) => {
@@ -73,21 +74,37 @@ export const updateMember = [
         return res.status(403).json({ message: "Access denied. Can only update own profile." });
       }
 
-      const { name, department, phone, joinReason } = req.body;
+      const { name, department, phone, joinReason, photo, password } = req.body;
 
-      const member = await Member.findByIdAndUpdate(
-        req.params.id,
-        { name, department, phone, joinReason },
-        { new: true, runValidators: true }
-      ).select("-password");
-
+      const updateData = { name, department, phone, joinReason, photo };
+      
+      // If password is provided, it will be hashed by the pre-save hook if we use save(), 
+      // but findByIdAndUpdate bypasses pre-save hooks. 
+      // So we need to handle password update separately or use save().
+      
+      let member = await Member.findById(req.params.id);
       if (!member) {
         return res.status(404).json({ message: "Member not found" });
       }
 
+      member.name = name || member.name;
+      member.department = department || member.department;
+      member.phone = phone || member.phone;
+      member.joinReason = joinReason || member.joinReason;
+      member.photo = photo || member.photo;
+
+      if (password) {
+        member.password = password; // Will be hashed by pre-save hook
+      }
+
+      await member.save();
+      
+      // Return without password
+      const memberResponse = member.toJSON();
+
       res.json({
         message: "Member updated successfully",
-        member
+        member: memberResponse
       });
     } catch (err) {
       next(err);
@@ -140,3 +157,140 @@ export const getRecentRegistrations = [
     }
   }
 ];
+
+// Update member privilege (Admin only)
+export const updateMemberPrivilege = [
+  authenticate,
+  adminOnly,
+  async (req, res, next) => {
+    try {
+      const { role } = req.body;
+      if (!["Member", "Staff", "Admin"].includes(role)) {
+        return res.status(400).json({ message: "Invalid role" });
+      }
+
+      const member = await Member.findByIdAndUpdate(
+        req.params.id,
+        { role },
+        { new: true }
+      ).select("-password");
+
+      if (!member) {
+        return res.status(404).json({ message: "Member not found" });
+      }
+
+      res.json({ message: "Member privilege updated", member });
+    } catch (err) {
+      next(err);
+    }
+  }
+];
+
+// Update member schedule (Admin only)
+export const updateMemberSchedule = [
+  authenticate,
+  adminOnly,
+  async (req, res, next) => {
+    try {
+      const { schedule } = req.body;
+      const member = await Member.findByIdAndUpdate(
+        req.params.id,
+        { schedule },
+        { new: true }
+      ).select("-password");
+
+      if (!member) {
+        return res.status(404).json({ message: "Member not found" });
+      }
+
+      res.json({ message: "Member schedule updated", member });
+    } catch (err) {
+      next(err);
+    }
+  }
+];
+
+// Get member performance (Admin or own)
+export const getMemberPerformance = [
+  authenticate,
+  async (req, res, next) => {
+    try {
+      // Admin can see anyone's, Member can only see their own
+      if (req.member.role !== "Admin" && req.member._id.toString() !== req.params.id) {
+        return res.status(403).json({ message: "Access denied" });
+      }
+
+      const member = await Member.findById(req.params.id).select("-password");
+      if (!member) {
+        return res.status(404).json({ message: "Member not found" });
+      }
+
+      // Calculate performance based on tasks
+      const totalTasks = await Task.countDocuments({ assignedTo: member._id });
+      const completedTasks = await Task.countDocuments({ assignedTo: member._id, status: "Completed" });
+      
+      const performanceData = {
+        ...member.performance,
+        totalTasks,
+        completedTasks,
+        completionRate: totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0
+      };
+
+      res.json(performanceData);
+    } catch (err) {
+      next(err);
+    }
+  }
+];
+
+// Get overall members performance (Admin/Member)
+export const getOverallPerformance = [
+  authenticate,
+  async (req, res, next) => {
+    try {
+      const members = await Member.find({ active: true }).select("name performance");
+      
+      // Aggregate task data for all members
+      const performanceData = await Promise.all(members.map(async (member) => {
+        const totalTasks = await Task.countDocuments({ assignedTo: member._id });
+        const completedTasks = await Task.countDocuments({ assignedTo: member._id, status: "Completed" });
+        return {
+          id: member._id,
+          name: member.name,
+          totalTasks,
+          completedTasks,
+          completionRate: totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0
+        };
+      }));
+
+      res.json(performanceData);
+    } catch (err) {
+      next(err);
+    }
+  }
+];
+
+// Upload profile photo
+export const uploadProfilePhoto = async (req, res, next) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "Please upload a file" });
+    }
+
+    const member = await Member.findById(req.member.id);
+    if (!member) {
+      return res.status(404).json({ message: "Member not found" });
+    }
+
+    // Store relative path
+    member.photo = req.file.path.replace(/\\/g, "/");
+    await member.save();
+
+    res.json({
+      message: "Photo uploaded successfully",
+      photo: member.photo
+    });
+  } catch (err) {
+    next(err);
+  }
+};

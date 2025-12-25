@@ -1,0 +1,13 @@
+{
+  "name": "envirclub",
+  "version": "1.0.0",
+  "description": "Haramaya University Environmental Protection Club",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd frontend && npm install && npm run build",
+    "postinstall": "cd backend && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

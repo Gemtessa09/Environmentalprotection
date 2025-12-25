@@ -37,6 +37,9 @@ import NationalCHM from "./pages/About/NationalCHM";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AdminDashboard from "./pages/AdminDashboard";
+import MemberDashboard from "./pages/MemberDashboard";
+import StaffDashboard from "./pages/StaffDashboard";
 import { ClubProvider } from "./context/ClubContext";
 import { LanguageProvider } from "./context/LanguageContext";
 
@@ -86,6 +89,9 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/staff" element={<StaffDashboard />} />
+                <Route path="/dashboard" element={<MemberDashboard />} />
               </Routes>
             </main>
             <Footer />

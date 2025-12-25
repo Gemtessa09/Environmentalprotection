@@ -10,9 +10,9 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const apiKey = window.localStorage.getItem("hec_api_key");
-  if (apiKey) {
-    config.headers["x-api-key"] = apiKey;
+  const token = window.localStorage.getItem("token");
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
   }
   return config;
 });

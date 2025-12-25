@@ -219,4 +219,46 @@ router.post("/create-staff", async (req, res) => {
   }
 });
 
+// Update member/staff (Admin only)
+router.put("/members/:id", async (req, res) => {
+  try {
+    const { name, email, role, department, phone, active } = req.body;
+    const member = await Member.findById(req.params.id);
+
+    if (!member) {
+      return res.status(404).json({ message: "Member not found" });
+    }
+
+    // Prevent changing own role if not careful, but admin can do anything usually.
+    // Let's allow updating fields.
+    if (name) member.name = name;
+    if (email) member.email = email;
+    if (role) member.role = role;
+    if (department) member.department = department;
+    if (phone) member.phone = phone;
+    if (typeof active !== 'undefined') member.active = active;
+
+    await member.save();
+
+    res.json({ message: "Member updated successfully", member });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Delete member/staff (Admin only)
+router.delete("/members/:id", async (req, res) => {
+  try {
+    const member = await Member.findById(req.params.id);
+    if (!member) {
+      return res.status(404).json({ message: "Member not found" });
+    }
+
+    await Member.findByIdAndDelete(req.params.id);
+    res.json({ message: "Member deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 export default router;

@@ -36,6 +36,9 @@ const Footer = () => {
             <a className="hover:text-lime-300" href="https://www.youtube.com" target="_blank" rel="noreferrer">
               YouTube
             </a>
+            <a className="hover:text-lime-300" href="https://github.com" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
           </div>
         </div>
 

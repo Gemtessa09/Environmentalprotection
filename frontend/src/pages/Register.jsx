@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import http from "../services/http";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -76,13 +80,39 @@ const Register = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Here you would typically send the data to your backend
-      console.log("Registration data:", formData);
-      setRegistered(true);
-      setTimeout(() => setRegistered(false), 3000);
+      setLoading(true);
+      try {
+        const payload = {
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          password: formData.password,
+          department: formData.department,
+          phone: formData.phone,
+          joinReason: formData.interests.join(", ")
+        };
+
+        const { data } = await http.post("/auth/register", payload);
+        
+        // Save token and user info
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.member));
+
+        setRegistered(true);
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
+      } catch (err) {
+        console.error(err);
+        setErrors(prev => ({
+          ...prev,
+          submit: err.response?.data?.message || "Registration failed. Please try again."
+        }));
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -173,6 +203,17 @@ const Register = () => {
                   <span className="text-lg">✅</span>
                 </div>
                 <span className="text-emerald-800 font-medium">Registration successful! Welcome to our community!</span>
+              </div>
+            </div>
+          )}
+
+          {errors.submit && (
+            <div className="mb-6 transform rounded-2xl border border-red-200 bg-red-50 p-4 text-center shadow-lg transition-all duration-300">
+              <div className="flex items-center justify-center">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 mr-3">
+                  <span className="text-lg">❌</span>
+                </div>
+                <span className="text-red-800 font-medium">{errors.submit}</span>
               </div>
             </div>
           )}
@@ -346,11 +387,12 @@ const Register = () => {
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center pt-6">
               <button
                 type="submit"
-                className="transform rounded-xl bg-emerald-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                disabled={loading}
+                className="transform rounded-xl bg-emerald-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="flex items-center justify-center">
-                  <span className="mr-2">🎉</span>
-                  Create Account
+                  <span className="mr-2">{loading ? "⏳" : "🎉"}</span>
+                  {loading ? "Creating Account..." : "Create Account"}
                 </span>
               </button>
               <button

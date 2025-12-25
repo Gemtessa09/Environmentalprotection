@@ -16,6 +16,12 @@ const MemberSchema = new mongoose.Schema(
     active: { type: Boolean, default: true },
     department: { type: String, trim: true },
     phone: { type: String, trim: true },
+    photo: { type: String, default: "" },
+    schedule: { type: String, default: "" }, // Can be a text description or link
+    performance: {
+      tasksCompleted: { type: Number, default: 0 },
+      rating: { type: Number, default: 0 } // 0-100 or 0-5
+    }
   },
   { timestamps: true }
 );

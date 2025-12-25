@@ -21,3 +21,4 @@ frontend/.cache
 # OS
 .DS_Store
 Thumbs.db
+backend/uploads

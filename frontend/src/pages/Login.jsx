@@ -1,44 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import http from "../services/http";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const existingEmail = window.localStorage.getItem("hec_user_email") || "";
-    const existingPassword = window.localStorage.getItem("hec_user_password") || "";
-    setEmail(existingEmail);
-    setPassword(existingPassword);
-  }, []);
-
-  const save = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
-    // Basic validation
-    if (!email.trim() || !password.trim()) {
-      setError("Please enter both email and password");
-      return;
+    try {
+      const { data } = await http.post("/auth/login", { email, password });
+      
+      // Save token and user info
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.member));
+
+      // Redirect based on role
+      if (data.member.role === "Admin") {
+        navigate("/admin");
+      } else if (data.member.role === "Staff") {
+        navigate("/staff");
+      } else {
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
     }
-
-    if (!email.includes("@")) {
-      setError("Please enter a valid email address");
-      return;
-    }
-
-    window.localStorage.setItem("hec_user_email", email.trim());
-    window.localStorage.setItem("hec_user_password", password.trim());
-    setSaved(true);
-    setTimeout(() => setSaved(false), 1500);
-  };
-
-  const clear = () => {
-    window.localStorage.removeItem("hec_user_email");
-    window.localStorage.removeItem("hec_user_password");
-    setEmail("");
-    setPassword("");
   };
 
   return (
@@ -120,17 +115,6 @@ const Login = () => {
             </p>
           </div>
 
-          {saved && (
-            <div className="mb-6 transform rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-center shadow-lg transition-all duration-300">
-              <div className="flex items-center justify-center">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 mr-3">
-                  <span className="text-lg">✅</span>
-                </div>
-                <span className="text-emerald-800 font-medium">Login credentials saved successfully!</span>
-              </div>
-            </div>
-          )}
-
           {error && (
             <div className="mb-6 transform rounded-2xl border border-red-200 bg-red-50 p-4 text-center shadow-lg transition-all duration-300">
               <div className="flex items-center justify-center">
@@ -142,7 +126,7 @@ const Login = () => {
             </div>
           )}
 
-          <form onSubmit={save} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Email Address
@@ -184,23 +168,15 @@ const Login = () => {
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
                 type="submit"
-                className="transform rounded-xl bg-emerald-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                disabled={loading}
+                className="transform rounded-xl bg-emerald-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="flex items-center justify-center">
-                  <span className="mr-2">�</span>
-                  Sign In
+                  <span className="mr-2">{loading ? "⏳" : "🚀"}</span>
+                  {loading ? "Signing In..." : "Sign In"}
                 </span>
               </button>
-              <button
-                type="button"
-                onClick={clear}
-                className="transform rounded-xl border-2 border-gray-300 bg-white px-8 py-3 text-sm font-semibold text-gray-700 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-              >
-                <span className="flex items-center justify-center">
-                  <span className="mr-2">🗑️</span>
-                  Clear Credentials
-                </span>
-              </button>
+
             </div>
           </form>
 
