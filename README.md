@@ -27,15 +27,7 @@ Full-stack web app for Haramaya University Environmental Law and Policy Center. 
 
 Save the Haramaya University logo image as `frontend/public/haramaya-logo.png`. The navbar and footer will display it automatically.
 
-## Backend env
 
-```
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/club
-API_KEY=changeme
-JWT_SECRET=your_super_secret_jwt_key_here
-CLIENT_URL=https://environmental-protection.onrender.com
-```
 
 ## User Roles & Permissions
 
@@ -49,9 +41,7 @@ CLIENT_URL=https://environmental-protection.onrender.com
 
 After running `npm run seed:admin`:
 
-- Email: `admin@haramaya.edu.et`
-- Password: `admin123`
-- ⚠️ **Change this password immediately after first login!**
+
 
 ## API Endpoints
 
