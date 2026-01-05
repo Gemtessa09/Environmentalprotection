@@ -10,7 +10,7 @@ import Announcements from "./pages/Explore/Announcements";
 import BiodiversitySites from "./pages/Explore/BiodiversitySites";
 import EnvironmentalClubs from "./pages/Explore/EnvironmentalClubs";
 import WildlifePhotographers from "./pages/Explore/WildlifePhotographers";
-import FundingOpportunities from "./pages/Explore/FundingOpportunities";
+import FundingOpportunities from "./pages/Explore/Opportunities";
 import LatestNews from "./pages/Explore/LatestNews";
 
 import PracticeIndex from "./pages/Practice/Index";
@@ -32,8 +32,8 @@ import Publications from "./pages/Science/Publications";
 
 import AboutIndex from "./pages/About/Index";
 import HaramayaUniversity from "./pages/About/HaramayaUniversity";
-import EQA from "./pages/About/EQA";
-import NationalCHM from "./pages/About/NationalCHM";
+import EnvironmentalLawPolicyCenter from "./pages/About/EnvironmentalLawPolicyCenter";
+import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -83,8 +83,9 @@ const App = () => {
 
                 <Route path="/about" element={<AboutIndex />} />
                 <Route path="/about/haramaya-university" element={<HaramayaUniversity />} />
-                <Route path="/about/eqa" element={<EQA />} />
-                <Route path="/about/national-chm" element={<NationalCHM />} />
+                <Route path="/about/environmental-law-policy-center" element={<EnvironmentalLawPolicyCenter />} />
+
+                <Route path="/gallery" element={<Gallery />} />
 
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />

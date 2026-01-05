@@ -8,18 +8,18 @@ const PracticeIndex = () => {
       to: "/practice/stakeholders",
       body: "Partners and campus/community actors who support environmental work.",
       icon: "🤝",
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "from-blue-50 to-indigo-50",
-      borderColor: "border-blue-200/50"
+      color: "from-cyan-600 to-blue-600",
+      bgColor: "from-cyan-50 to-blue-50",
+      borderColor: "border-cyan-200/50"
     },
     {
       title: "Projects",
       to: "/practice/projects",
       body: "Active and past projects, plus ideas for new initiatives.",
       icon: "🚀",
-      color: "from-emerald-500 to-green-500",
-      bgColor: "from-emerald-50 to-green-50",
-      borderColor: "border-emerald-200/50"
+      color: "from-violet-600 to-purple-600",
+      bgColor: "from-violet-50 to-purple-50",
+      borderColor: "border-violet-200/50"
     },
   ];
 

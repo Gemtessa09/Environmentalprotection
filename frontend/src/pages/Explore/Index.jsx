@@ -8,8 +8,8 @@ const ExploreIndex = () => {
       to: "/explore/announcements",
       body: "Official notices, calls for volunteers, and upcoming activities.",
       icon: "📢",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "from-blue-50 to-cyan-50",
+      color: "from-blue-600 to-indigo-600",
+      bgColor: "from-blue-50 to-indigo-50",
       borderColor: "border-blue-200/50"
     },
     {
@@ -17,45 +17,45 @@ const ExploreIndex = () => {
       to: "/explore/biodiversity-sites",
       body: "Key habitats and sites of ecological importance in and around Haramaya.",
       icon: "🌿",
-      color: "from-green-500 to-emerald-500",
-      bgColor: "from-green-50 to-emerald-50",
-      borderColor: "border-green-200/50"
+      color: "from-emerald-600 to-teal-600",
+      bgColor: "from-emerald-50 to-teal-50",
+      borderColor: "border-emerald-200/50"
     },
     {
       title: "Environmental Clubs",
       to: "/explore/environmental-clubs",
       body: "What environmental clubs are and how students can participate.",
       icon: "🌱",
-      color: "from-emerald-500 to-teal-500",
-      bgColor: "from-emerald-50 to-teal-50",
-      borderColor: "border-emerald-200/50"
+      color: "from-green-600 to-emerald-600",
+      bgColor: "from-green-50 to-emerald-50",
+      borderColor: "border-green-200/50"
     },
     {
       title: "Wildlife Photographers",
       to: "/explore/wildlife-photographers",
       body: "Student and community photography that documents biodiversity.",
       icon: "📸",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50",
-      borderColor: "border-purple-200/50"
+      color: "from-fuchsia-600 to-pink-600",
+      bgColor: "from-fuchsia-50 to-pink-50",
+      borderColor: "border-fuchsia-200/50"
     },
     {
       title: "Funding Opportunities",
       to: "/explore/funding-opportunities",
       body: "Grants, scholarships, and small funds for environmental initiatives.",
       icon: "💰",
-      color: "from-yellow-500 to-orange-500",
-      bgColor: "from-yellow-50 to-orange-50",
-      borderColor: "border-yellow-200/50"
+      color: "from-amber-500 to-orange-600",
+      bgColor: "from-amber-50 to-orange-50",
+      borderColor: "border-amber-200/50"
     },
     {
       title: "Latest News and Updates",
       to: "/explore/latest-news",
       body: "Recent updates, highlights, and success stories.",
       icon: "📰",
-      color: "from-red-500 to-pink-500",
-      bgColor: "from-red-50 to-pink-50",
-      borderColor: "border-red-200/50"
+      color: "from-rose-600 to-red-600",
+      bgColor: "from-rose-50 to-red-50",
+      borderColor: "border-rose-200/50"
     },
   ];
 

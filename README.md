@@ -1,6 +1,6 @@
 # Haramaya Environmental Club 3D
 
-Full-stack web app for Haramaya University Environmental Protection Club. Includes an Express/MongoDB API and a React + Tailwind CSS front-end with a Three.js hero scene.
+Full-stack web app for Haramaya University Environmental Law and Policy Center. Includes an Express/MongoDB API and a React + Tailwind CSS front-end with a Three.js hero scene.
 
 ## Stack
 

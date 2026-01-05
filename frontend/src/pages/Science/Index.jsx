@@ -8,7 +8,7 @@ const ScienceIndex = () => {
       to: "/science/biodiversity-overview",
       body: "What biodiversity is and why it matters.",
       icon: "🦋",
-      color: "from-purple-500 to-indigo-500",
+      color: "from-purple-600 to-indigo-600",
       description: "Explore the incredible variety of life on Earth and understand its fundamental importance for human survival and well-being."
     },
     {
@@ -16,7 +16,7 @@ const ScienceIndex = () => {
       to: "/science/biodiversity-conservation",
       body: "How conservation works in practice.",
       icon: "🛡️",
-      color: "from-green-500 to-emerald-500",
+      color: "from-emerald-600 to-teal-600",
       description: "Learn about practical approaches to protecting and restoring biodiversity through science-based conservation strategies."
     },
     {
@@ -24,7 +24,7 @@ const ScienceIndex = () => {
       to: "/science/ecosystems",
       body: "Understanding ecosystems and services they provide.",
       icon: "🌍",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-blue-600 to-cyan-600",
       description: "Discover how ecosystems function and the vital services they provide to humanity and the planet."
     },
     {
@@ -32,7 +32,7 @@ const ScienceIndex = () => {
       to: "/science/publications",
       body: "Reports and learning resources.",
       icon: "📚",
-      color: "from-amber-500 to-orange-500",
+      color: "from-amber-500 to-orange-600",
       description: "Access scientific reports, research papers, and educational resources on biodiversity and conservation."
     },
   ];

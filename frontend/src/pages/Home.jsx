@@ -55,6 +55,14 @@ const Home = () => {
           </div>
 
           <div className="relative z-10 text-center">
+            <div className="mb-6 flex justify-center">
+               <img 
+                 src="/hulcsalogo.jpg" 
+                 alt="Logo" 
+                 className="h-24 w-24 rounded-full border-4 border-white/30 shadow-2xl object-cover"
+                 onError={(e) => e.target.style.display = 'none'}
+               />
+            </div>
             <h1 className="text-3xl font-extrabold text-white md:text-5xl lg:text-6xl drop-shadow-2xl">
               🌿 {t('protectNature')}
             </h1>
@@ -94,19 +102,21 @@ const Home = () => {
       </section>
 
       {/* Hero Section */}
-      <section className="overflow-hidden rounded-3xl border border-emerald-900/10 bg-gradient-to-r from-white to-emerald-50/30 shadow-xl">
+      <section className="overflow-hidden rounded-3xl border border-emerald-900/10 bg-gradient-to-br from-white via-emerald-50 to-cyan-50 shadow-xl">
         <div className="grid items-center gap-8 p-6 md:grid-cols-2 md:p-10">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm">
-              <img
-                src="/logo.jpg"
-                alt="Haramaya University logo"
-                className="h-5 w-5 rounded-full border border-emerald-900/10 bg-white object-cover"
+            <div className="flex items-center gap-4">
+               <img
+                src="/hulcsalogo.jpg"
+                alt="EPC Logo"
+                className="h-16 w-16 rounded-full border-2 border-emerald-100 shadow-md object-cover"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
               />
-              Haramaya University • Environmental Club
+              <div className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm">
+                HU • Environmental Law and Policy Center
+              </div>
             </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-emerald-950 md:text-4xl lg:text-5xl">
               {t('protectNature')}
@@ -128,6 +138,12 @@ const Home = () => {
                 className="inline-flex items-center justify-center rounded-2xl border-2 border-emerald-600 bg-white px-8 py-4 text-base font-semibold text-emerald-600 shadow-lg hover:bg-emerald-50 hover:shadow-xl transition-all duration-300"
               >
                 {t('joinClub')}
+              </Link>
+              <Link
+                to="/login"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-emerald-600 bg-emerald-50 px-8 py-4 text-base font-semibold text-emerald-700 shadow-lg hover:bg-emerald-100 hover:shadow-xl transition-all duration-300"
+              >
+                Login
               </Link>
             </div>
 
@@ -219,12 +235,12 @@ const Home = () => {
 
       {/* Environmental Photo Gallery */}
       <section className="space-y-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-emerald-950 md:text-4xl">
-            📸 {t('photoGalleryTitle')}
+        <div className="text-center bg-gradient-to-r from-sky-600 to-indigo-600 p-6 rounded-2xl shadow-lg">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl drop-shadow-md">
+            📸 Environmental Protection in Action
           </h2>
-          <p className="mt-4 text-lg text-slate-600 md:text-xl">
-            {t('photoGallerySubtitle')}
+          <p className="mt-4 text-lg text-white md:text-xl drop-shadow-md">
+            Witness the beauty of nature and our commitment to protecting it across Ethiopia and the world.
           </p>
         </div>
 
@@ -315,18 +331,18 @@ const Home = () => {
 
       {/* Featured Initiatives */}
       <section className="space-y-6">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl">{t('featuredInitiatives')}</h2>
-            <p className="mt-2 text-slate-600">{t('discoverLatest')}</p>
+        <div className="text-center bg-gradient-to-r from-sky-600 to-indigo-600 p-6 rounded-2xl shadow-lg">
+          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl drop-shadow-md">Featured Initiatives</h2>
+          <p className="mt-2 text-white drop-shadow-md">Discover our latest environmental initiatives and projects</p>
+          <div className="mt-4">
+            <Link
+              className="group inline-flex items-center text-sm font-semibold text-white hover:text-emerald-100 transition-colors"
+              to="/explore"
+            >
+              {t('viewAll')}
+              <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
+            </Link>
           </div>
-          <Link
-            className="group inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
-            to="/explore"
-          >
-            {t('viewAll')}
-            <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
-          </Link>
         </div>
 
         {loading && !featured.length ? (
@@ -349,9 +365,9 @@ const Home = () => {
 
       {/* What We Do */}
       <section className="space-y-6">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl">{t('whatWeDo')}</h2>
-          <p className="mt-2 text-slate-600">Our core activities for environmental protection and education</p>
+        <div className="text-center bg-gradient-to-r from-sky-600 to-indigo-600 p-6 rounded-2xl shadow-lg">
+          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl drop-shadow-md">{t('whatWeDo')}</h2>
+          <p className="mt-2 text-white drop-shadow-md">Our core activities for environmental protection and education</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           <Feature
@@ -376,7 +392,7 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-800 p-8 text-center text-white shadow-2xl md:p-12">
+      <section className="rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-8 text-center text-white shadow-2xl md:p-12">
         <h2 className="text-2xl font-bold md:text-3xl">Ready to Make a Difference?</h2>
         <p className="mt-4 text-lg text-emerald-100">
           Join our community of environmental champions at Haramaya University

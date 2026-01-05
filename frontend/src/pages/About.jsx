@@ -21,7 +21,7 @@ const About = ({ language }) => {
           {title}
         </h1>
         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600">
-          The Haramaya University Environmental Protection Club is a student-led community focused on
+          The Haramaya University Environmental Law and Policy Center is a student-led community focused on
           protecting nature, improving campus sustainability, and supporting environmental education
           through practical action.
         </p>

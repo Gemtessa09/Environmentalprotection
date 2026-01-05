@@ -16,7 +16,7 @@ const Footer = () => {
             />
             <div>
               <div className="text-sm font-semibold text-emerald-200">Haramaya University</div>
-              <div className="text-lg font-semibold">Environmental Protection Club</div>
+              <div className="text-lg font-semibold">Environmental Law and Policy Center</div>
             </div>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-emerald-100/90">
@@ -53,7 +53,7 @@ const Footer = () => {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-emerald-100/80 md:flex-row md:items-center md:justify-between items-center">
-          <div>© {new Date().getFullYear()} Haramaya Environmental Protection Club</div>
+          <div>© {new Date().getFullYear()} Haramaya Environmental Law and Policy Center</div>
           <div>Developed by Gemtessa Deksisa || Software Engineer</div>
         </div>
       </div>

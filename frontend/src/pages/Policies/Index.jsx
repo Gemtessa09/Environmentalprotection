@@ -8,7 +8,7 @@ const PoliciesIndex = () => {
       to: "/policies/nbsaps",
       body: "National Biodiversity Strategies and Action Plans.",
       icon: "📋",
-      color: "from-blue-500 to-indigo-500",
+      color: "from-blue-600 to-indigo-600",
       bgColor: "from-blue-50 to-indigo-50",
       borderColor: "border-blue-200/50"
     },
@@ -17,8 +17,8 @@ const PoliciesIndex = () => {
       to: "/policies/other-strategies",
       body: "Related strategies and sector plans that affect biodiversity.",
       icon: "🎯",
-      color: "from-emerald-500 to-green-500",
-      bgColor: "from-emerald-50 to-green-50",
+      color: "from-emerald-600 to-teal-600",
+      bgColor: "from-emerald-50 to-teal-50",
       borderColor: "border-emerald-200/50"
     },
     {
@@ -26,16 +26,16 @@ const PoliciesIndex = () => {
       to: "/policies/national-reports",
       body: "Reporting progress and challenges over time.",
       icon: "📊",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50",
-      borderColor: "border-purple-200/50"
+      color: "from-fuchsia-600 to-pink-600",
+      bgColor: "from-fuchsia-50 to-pink-50",
+      borderColor: "border-fuchsia-200/50"
     },
     {
       title: "National Legislation",
       to: "/policies/national-legislation",
       body: "Key laws and regulations supporting conservation and sustainability.",
       icon: "⚖️",
-      color: "from-amber-500 to-orange-500",
+      color: "from-amber-500 to-orange-600",
       bgColor: "from-amber-50 to-orange-50",
       borderColor: "border-amber-200/50"
     },
@@ -44,9 +44,9 @@ const PoliciesIndex = () => {
       to: "/policies/international-conventions",
       body: "Global agreements that shape local policy and action.",
       icon: "🌍",
-      color: "from-teal-500 to-cyan-500",
-      bgColor: "from-teal-50 to-cyan-50",
-      borderColor: "border-teal-200/50"
+      color: "from-cyan-600 to-sky-600",
+      bgColor: "from-cyan-50 to-sky-50",
+      borderColor: "border-cyan-200/50"
     },
   ];
 

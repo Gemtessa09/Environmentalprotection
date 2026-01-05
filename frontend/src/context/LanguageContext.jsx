@@ -82,7 +82,7 @@ const translations = {
 
     // Logo/Brand
     haramayaUniversityBrand: 'Haramaya University',
-    environmentalProtectionClub: 'Environmental Protection Club',
+    environmentalProtectionClub: 'Environmental Law and Policy Center',
 
     // Navigation
     menu: 'Menu',
@@ -92,7 +92,7 @@ const translations = {
 
     // Home Page
     protectNature: 'Protect Nature, Preserve Life',
-    homeSubtitle: 'Join Haramaya University\'s Environmental Protection Club in our mission to create a sustainable future through education, action, and innovation.',
+    homeSubtitle: 'Join Haramaya University\'s Environmental Law and Policy Center in our mission to create a sustainable future through education, action, and innovation.',
     searchPlaceholder: 'Search for environmental topics, projects, or initiatives...',
     searchButton: 'Search',
     exploreInitiatives: 'Explore Initiatives',
@@ -250,7 +250,7 @@ const translations = {
 
     // Logo/Brand
     haramayaUniversityBrand: 'የሃራማያ ዩኒቨርሲቲ',
-    environmentalProtectionClub: 'የአካባቢ ጥበቃ ክለብ',
+    environmentalProtectionClub: 'የአካባቢ ህግ እና ፖሊሲ ማዕከል',
 
     // Navigation
     menu: 'ሜኑ',
@@ -260,7 +260,7 @@ const translations = {
 
     // Home Page
     protectNature: 'ተፈጥሮን ጠብቅ፣ ሕይወትን አስተያየት',
-    homeSubtitle: 'በሃራማያ ዩኒቨርሲቲ የአካባቢ ጥበቃ ክለብ ከእኛ ጋር ተቀላቀሉ በትምህርት፣ በተግባር እና በኢኖቬሽን በኩል ተቀጣጣይ የሆነ የቀጣይ ለመስራት።',
+    homeSubtitle: 'በሃራማያ ዩኒቨርሲቲ የአካባቢ ህግ እና ፖሊሲ ማዕከል ከእኛ ጋር ተቀላቀሉ በትምህርት፣ በተግባር እና በኢኖቬሽን በኩል ተቀጣጣይ የሆነ የቀጣይ ለመስራት።',
     searchPlaceholder: 'ለአካባቢ ርዕሶች፣ ፕሮጀክቶች ወይም ተግባራት ያስስ...',
     searchButton: 'ፈልግ',
     exploreInitiatives: 'ተግባራትን አስስ',

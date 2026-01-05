@@ -10,27 +10,18 @@ const AboutIndex = () => {
       to: "/about/haramaya-university",
       body: t('haramayaUniversityDesc'),
       icon: "🏛️",
-      color: "from-emerald-500 to-green-500",
+      color: "from-emerald-600 to-green-600",
       bgColor: "from-emerald-50 to-green-50",
       borderColor: "border-emerald-200/50"
     },
     {
-      title: t('eqaTitle'),
-      to: "/about/eqa",
-      body: t('eqaDesc'),
-      icon: "🌿",
-      color: "from-blue-500 to-emerald-500",
-      bgColor: "from-blue-50 to-emerald-50",
-      borderColor: "border-blue-200/50"
-    },
-    {
-      title: t('nationalChmTitle'),
-      to: "/about/national-chm",
-      body: t('nationalChmDesc'),
-      icon: "🌐",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50",
-      borderColor: "border-purple-200/50"
+      title: "Environmental Law and Policy Center",
+      to: "/about/environmental-law-policy-center",
+      body: "Protecting the natural environment through legal scholarship, research, and community outreach.",
+      icon: "⚖️",
+      color: "from-teal-600 to-cyan-600",
+      bgColor: "from-teal-50 to-cyan-50",
+      borderColor: "border-teal-200/50"
     },
   ];
 

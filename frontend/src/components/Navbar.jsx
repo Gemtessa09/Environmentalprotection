@@ -17,9 +17,8 @@ const Navbar = () => {
   const exploreItems = [
     { label: t('announcements'), to: "/explore/announcements" },
     { label: t('biodiversitySites'), to: "/explore/biodiversity-sites" },
-    { label: t('environmentalClubs'), to: "/explore/environmental-clubs" },
     { label: t('wildlifePhotographers'), to: "/explore/wildlife-photographers" },
-    { label: t('fundingOpportunities'), to: "/explore/funding-opportunities" },
+    { label: t('Opportunities'), to: "/explore/funding-opportunities" },
     { label: t('latestNews'), to: "/explore/latest-news" },
   ];
 
@@ -29,11 +28,12 @@ const Navbar = () => {
   ];
 
   const policiesItems = [
-    { label: t('nbsaps'), to: "/policies/nbsaps" },
-    { label: t('otherStrategies'), to: "/policies/other-strategies" },
-    { label: t('nationalReports'), to: "/policies/national-reports" },
+   
     { label: t('nationalLegislation'), to: "/policies/national-legislation" },
     { label: t('internationalConventions'), to: "/policies/international-conventions" },
+     { label: t('nationalReports'), to: "/policies/national-reports" },
+    { label: t('otherStrategies'), to: "/policies/other-strategies" },
+ 
   ];
 
   const scienceItems = [
@@ -45,8 +45,7 @@ const Navbar = () => {
 
   const aboutItems = [
     { label: t('haramayaUniversity'), to: "/about/haramaya-university" },
-    { label: t('eqa'), to: "/about/eqa" },
-    { label: t('nationalChm'), to: "/about/national-chm" },
+    { label: "Environmental Law and Policy Center", to: "/about/environmental-law-policy-center" },
   ];
 
   const memberItems = [
@@ -55,7 +54,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-20 border-b border-cyan-400/20 bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 backdrop-blur-lg shadow-2xl transform-gpu">
+    <header className="sticky top-0 z-20 border-b border-white/10 bg-gradient-to-r from-slate-900 via-emerald-900 to-teal-900 backdrop-blur-xl shadow-2xl transform-gpu">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link
           to="/"
@@ -102,8 +101,9 @@ const Navbar = () => {
           <DesktopDropdown label={t('practice')} to="/practice" items={practiceItems} />
           <DesktopDropdown label={t('policies')} to="/policies" items={policiesItems} />
           <DesktopDropdown label={t('science')} to="/science" items={scienceItems} />
+          <NavLink to="/gallery">{t('gallery') || "Gallery"}</NavLink>
           <NavLink to="/contact">{t('contact')}</NavLink>
-          <DesktopDropdown label={t('becomeMember')} to="/register" items={memberItems} />
+          <DesktopDropdown label={t('JoinUs')} to="/register" items={memberItems} />
         </nav>
       </div>
 
@@ -117,6 +117,7 @@ const Navbar = () => {
             <MobileSection label={t('policies')} to="/policies" items={policiesItems} sectionKey="policies" mobileDropdowns={mobileDropdowns} onToggle={toggleMobileDropdown} onNavigate={() => setOpen(false)} />
             <MobileSection label={t('science')} to="/science" items={scienceItems} sectionKey="science" mobileDropdowns={mobileDropdowns} onToggle={toggleMobileDropdown} onNavigate={() => setOpen(false)} />
 
+            <MobileLink to="/gallery" onClick={() => setOpen(false)}>{t('gallery') || "Gallery"}</MobileLink>
             <MobileLink to="/contact" onClick={() => setOpen(false)}>{t('contact')}</MobileLink>
             <MobileSection label={t('becomeMember')} to="/register" items={memberItems} sectionKey="member" mobileDropdowns={mobileDropdowns} onToggle={toggleMobileDropdown} onNavigate={() => setOpen(false)} />
           </div>

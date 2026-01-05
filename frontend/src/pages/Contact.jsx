@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaGithub, FaPhone, FaPaperPlane } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaGithub, FaLinkedin, FaPhone, FaPaperPlane } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 
 const Contact = () => {
@@ -63,15 +63,16 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaFacebook />, name: t('facebook'), link: "https://www.facebook.com", color: "hover:text-blue-600" },
-    { icon: <FaYoutube />, name: t('youtube'), link: "https://www.youtube.com", color: "hover:text-red-600" },
-    { icon: <FaInstagram />, name: t('instagram'), link: "https://www.instagram.com", color: "hover:text-pink-600" },
-    { icon: <FaTwitter />, name: t('twitter'), link: "https://www.twitter.com", color: "hover:text-blue-400" },
-    { icon: <FaGithub />, name: "GitHub", link: "https://github.com", color: "hover:text-gray-800" }
+    { icon: <FaFacebook />, name: "Facebook", link: "https://www.facebook.com", color: "hover:text-blue-600" },
+    { icon: <FaYoutube />, name: "YouTube", link: "https://www.youtube.com", color: "hover:text-red-600" },
+    { icon: <FaInstagram />, name: "Instagram", link: "https://www.instagram.com", color: "hover:text-pink-600" },
+    { icon: <FaTwitter />, name: "Twitter", link: "https://www.twitter.com", color: "hover:text-blue-400" },
+    { icon: <FaGithub />, name: "GitHub", link: "https://github.com", color: "hover:text-gray-800" },
+    { icon: <FaLinkedin />, name: "LinkedIn", link: "https://www.linkedin.com", color: "hover:text-blue-700" }
   ];
 
   return (
-    <div className="min-h-screen bg-white/80 backdrop-blur-sm">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50/30 backdrop-blur-sm">
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -254,9 +255,9 @@ const Contact = () => {
           >
             {/* Social Media */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('followUs')}</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Follow Us</h3>
               <p className="text-gray-600 mb-6">
-                {t('followUsDescription')}
+                Stay connected with our latest environmental initiatives and events.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, index) => (

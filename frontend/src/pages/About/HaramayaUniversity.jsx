@@ -13,7 +13,7 @@ const HaramayaUniversity = () => {
               alt="Haramaya University Background" 
               className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
               onError={(e) => {
-                e.target.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop";
+                e.target.src = "/haramayauniversityphoto2.jpg";
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/60 via-green-900/50 to-teal-900/60"></div>
